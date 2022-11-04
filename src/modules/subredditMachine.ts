@@ -4,6 +4,7 @@ import { fetchSubreddit } from './api';
 type MachineContext = {
   subreddit: string;
   posts: any[];
+  lastUpdatedAt: null | Date;
 };
 
 type DoneLoadingEvent = {
@@ -32,6 +33,7 @@ export const createSubredditMachine = (subreddit: string) =>
       context: {
         subreddit,
         posts: [],
+        lastUpdatedAt: null,
       },
       tsTypes: {} as import('./subredditMachine.typegen').Typegen0,
       initial: 'loading',
@@ -61,7 +63,10 @@ export const createSubredditMachine = (subreddit: string) =>
         invokeFetchSubreddit: (context) => fetchSubreddit(context.subreddit),
       },
       actions: {
-        doneLoading: assign({ posts: (_, event) => event.data }),
+        doneLoading: assign({
+          posts: (_, event) => event.data,
+          lastUpdatedAt: (_) => new Date(),
+        }),
       },
     }
   );

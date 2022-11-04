@@ -20,7 +20,7 @@ function Subreddit({ subreddit }: SubredditProps) {
     );
   }
 
-  const { posts } = current.context;
+  const { posts, lastUpdatedAt } = current.context;
 
   return (
     <div>
@@ -29,6 +29,7 @@ function Subreddit({ subreddit }: SubredditProps) {
       <header>
         <h2>{subreddit}</h2>
         <small>
+          Last updated at: {lastUpdatedAt && lastUpdatedAt.toLocaleTimeString()}
           <button onClick={() => send('REFRESH')}>Refresh</button>
         </small>
       </header>
