@@ -3,20 +3,9 @@
 export interface Typegen0 {
   "@@xstate/typegen": true;
   internalEvents: {
-    "done.invoke.invokeFetchSubreddit": {
-      type: "done.invoke.invokeFetchSubreddit";
-      data: unknown;
-      __tip: "See the XState TS docs to learn how to strongly type this.";
-    };
-    "error.platform.invokeFetchSubreddit": {
-      type: "error.platform.invokeFetchSubreddit";
-      data: unknown;
-    };
     "xstate.init": { type: "xstate.init" };
   };
-  invokeSrcNameMap: {
-    invokeFetchSubreddit: "done.invoke.invokeFetchSubreddit";
-  };
+  invokeSrcNameMap: {};
   missingImplementations: {
     actions: never;
     services: never;
@@ -24,20 +13,11 @@ export interface Typegen0 {
     delays: never;
   };
   eventsCausingActions: {
-    doneLoading: "done.invoke.invokeFetchSubreddit";
     select: "SELECT";
   };
-  eventsCausingServices: {
-    invokeFetchSubreddit: "SELECT";
-  };
+  eventsCausingServices: {};
   eventsCausingGuards: {};
   eventsCausingDelays: {};
-  matchesStates:
-    | "idle"
-    | "selected"
-    | "selected.failed"
-    | "selected.loaded"
-    | "selected.loading"
-    | { selected?: "failed" | "loaded" | "loading" };
+  matchesStates: "idle" | "selected";
   tags: never;
 }
