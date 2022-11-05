@@ -70,3 +70,5 @@ export const createSubredditMachine = (subreddit: string) =>
       },
     }
   );
+
+export type SubredditMachine = ReturnType<typeof createSubredditMachine>;

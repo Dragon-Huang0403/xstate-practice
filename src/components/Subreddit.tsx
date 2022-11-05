@@ -1,15 +1,17 @@
 import React from 'react';
-import { useMachine } from '@xstate/react';
+import { ActorRefFrom } from 'xstate';
+import { useMachine, useActor } from '@xstate/react';
 
-import { createSubredditMachine } from '../modules/subredditMachine';
+import { SubredditMachine } from '../modules/subredditMachine';
 
 interface SubredditProps {
-  subreddit: string;
+  service: ActorRefFrom<SubredditMachine>;
 }
 
-function Subreddit({ subreddit }: SubredditProps) {
-  const subredditMachine = createSubredditMachine(subreddit);
-  const [current, send] = useMachine(subredditMachine);
+function Subreddit({ service }: SubredditProps) {
+  const [current, send] = useActor(service);
+
+  const { subreddit } = current.context;
 
   if (current.matches('failed')) {
     return (

@@ -22,7 +22,7 @@ function App() {
           ))}
         </select>
       </header>
-      {subreddit && <Subreddit subreddit={subreddit} key={subreddit} />}
+      {subreddit && <Subreddit service={subreddit} key={subreddit.id} />}
     </div>
   );
 }
